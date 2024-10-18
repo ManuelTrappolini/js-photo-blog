@@ -27,17 +27,23 @@ main{
     font-family: "Edu TAS Beginner", serif;
 }
 
-/* .pin{
+.pin{
     width: 2rem;
     position: absolute;
-    top: 50%;
+    top: 2%;
     left: 50%;
     transform: translate(-50%, -50%);
-} */
+}
 
 .card{
     --bs-card-border-radius: var(--bs-border-radiu);
     
+}
+
+.card:hover { 
+    transform: rotate(30deg);
+    z-index: 2;
+    scale:1.2;
 }
 
 /* #endregion main */
