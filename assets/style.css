@@ -24,7 +24,6 @@ header{
 /* #region main */
 main{
     background-image: url(./img/cork.png);
-    height: 100vh;
     font-family: "Edu TAS Beginner", serif;
 }
 

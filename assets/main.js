@@ -10,5 +10,29 @@
 //rendi la pagina responsive, in modo che su mobile e tablet le foto si dispongano man mano una sotto l’altra ed il titolo abbia una dimensione adeguata
 
 console.log('it works');
+const rowEL = document.querySelector('.row')
 
+
+axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
+.then(response =>{
+    const data = response.data
+    console.log(data);
+    data.forEach(element => {
+        const{url, title} = element
+        console.log(url, title);
+        const markup = `
+            <div class="card p-relative px-3 py-3 mt-5" style="width:18rem;">
+                    <!-- <img class="pin" src="./assets/img/pin.svg" alt=""> -->
+                    <img src="${url}"
+                        class="" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">${title}</p>
+                    </div>
+            </div>
+        `
+        rowEL.innerHTML += markup
+    });
+    
+    
+}) .catch(error =>console.error(error));
 
