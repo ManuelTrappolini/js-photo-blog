@@ -1,8 +1,13 @@
+/* #region common */
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
+
+
+/* #endregion common */
 
 /* #region header */
 header{
@@ -24,7 +29,7 @@ header{
 main{
     background-image: url(./img/cork.png);
     font-family: "Edu TAS Beginner", serif;
-
+    height: 100%
 }
 
 .pin{
@@ -55,11 +60,20 @@ main{
     align-items: center;
 }
 
+p{
+    text-transform: capitalize;
+}
+
 /* #endregion main */
+
+/* #region mediaquery */
 
 @media only screen and (min-width: 1400px) {
     .container{
         width: 70%;
+    }
+    body{
+        height: 100vh;
     }
 }
 
@@ -67,4 +81,7 @@ main{
     .container{
         width: 60%;
     }
+    
 }
+
+/* #endregion mediaquery */
