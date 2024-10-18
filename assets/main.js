@@ -21,7 +21,7 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
         const{url, title} = element
         console.log(url, title);
         const markup = `
-            <div class="card hover p-relative px-3 py-3 mx-2 mt-4" style="width:18rem;">
+            <div class="card col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 p-relative px-3 py-3 mx-2 mt-4" style="width:18rem;">
                     <img class="pin" src="./assets/img/pin.svg" alt=""> 
                     <img src="${url}"
                         class="" alt="...">
@@ -29,6 +29,7 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
                         <p class="card-text">${title}</p>
                     </div>
             </div>
+        
         `
         rowEL.innerHTML += markup
     });
