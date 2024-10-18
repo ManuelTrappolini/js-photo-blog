@@ -29,7 +29,11 @@ header{
 main{
     background-image: url(./img/cork.png);
     font-family: "Edu TAS Beginner", serif;
-    height: 100%
+    
+    
+}
+.container{
+    padding-bottom: 100px;
 }
 
 .pin{
