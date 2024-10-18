@@ -4,6 +4,7 @@
     padding: 0;
 }
 
+
 /* #region header */
 header{
     background-image: url(./img/wall.png);
@@ -23,6 +24,21 @@ header{
 /* #region main */
 main{
     background-image: url(./img/cork.png);
+    height: 100vh;
+    font-family: "Edu TAS Beginner", serif;
+}
+
+/* .pin{
+    width: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} */
+
+.card{
+    --bs-card-border-radius: var(--bs-border-radiu);
+    
 }
 
 /* #endregion main */
