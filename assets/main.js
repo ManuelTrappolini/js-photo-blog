@@ -10,13 +10,26 @@
 //rendi la pagina responsive, in modo che su mobile e tablet le foto si dispongano man mano una sotto l’altra ed il titolo abbia una dimensione adeguata
 
 console.log('it works');
-const rowEL = document.querySelector('.row')
-
+const rowEL = document.querySelector('.wrapper')
 
 axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
 .then(response =>{
+    generatePictures(response)
+    
+    
+    
+}) .catch(error =>console.error(error));
+
+
+
+
+
+
+
+
+
+function generatePictures(response){
     const data = response.data
-    console.log(data);
     data.forEach(element => {
         const{url, title} = element
         console.log(url, title);
@@ -32,8 +45,8 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
         
         `
         rowEL.innerHTML += markup
+        return title
     });
     
-    
-}) .catch(error =>console.error(error));
+}
 
