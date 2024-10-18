@@ -21,7 +21,7 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
         const{url, title} = element
         console.log(url, title);
         const markup = `
-            <div class="card p-relative px-3 py-3 mt-5" style="width:18rem;">
+            <div class="card p-relative px-3 py-3 mx-2 mt-4" style="width:18rem;">
                     <!-- <img class="pin" src="./assets/img/pin.svg" alt=""> -->
                     <img src="${url}"
                         class="" alt="...">
