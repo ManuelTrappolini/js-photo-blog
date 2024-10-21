@@ -12,25 +12,11 @@
 console.log('it works');
 const rowEL = document.querySelector('.wrapper')
 const overlayEl = document.querySelector('.overlay')
-const closeOverlayEl = document.querySelector('.closeOverlay')
+
 
 axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
     .then(response => {
         generatePictures(response);
-
-        /* const cardEl = document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('click', function (e) {
-                document.querySelector('.overlay').style.display = "block";
-                const data = response.data
-                    const { url } = data
-                    const markupTwo = `
-                    <img class="overlayImage" src="${url}" alt="">
-                    `
-                    overlayEl.innerHTML += markupTwo 
-                    
-                
-            })
-        }) */
     }).catch(error => console.error(error));
 
 
@@ -60,52 +46,32 @@ function generatePictures(response) {
         console.log(array);
         const cardEl = document.querySelectorAll('.card').forEach(card => {
             card.addEventListener('click', function (e) {
-
                 const imgCard = card.querySelector('.picture').src
                 const markup1 = `
-            <img class="overlayImage" src="${imgCard}" alt="">
-            `
+                <button class="closeOverlay"><i class="fa-solid fa-xmark"></i></button>
+                <img class="overlayImage" src="${imgCard}" alt="">
+                `
                 overlayEl.innerHTML = markup1
                 overlayEl.style.display = "block";
+                closeOverlayByButton()
+                closeOverlay()
             })
         })
     }
     );
-
-
-}
-
-function overlayImage(imageEL) {
-    imageEL.addEventlistener('click', function (e) {
-        console.log(url);
-
-    });
 }
 
 
-function closeOverlay() {
+function closeOverlayByButton() {
+    const closeOverlayEl = document.querySelector('.closeOverlay')
     closeOverlayEl.addEventListener('click', function (e) {
         document.querySelector('.overlay').style.display = "none";
     });
 }
 
-function openOverlay(cardEl) {
-    cardEl.addEventListener('click', function (e) {
-        document.querySelector('.overlay').style.display = "block";
+function closeOverlay() {
+    const overlayEl = document.querySelector('.overlay')
+    overlayEl.addEventListener('click', function (e) {
+        document.querySelector('.overlay').style.display = "none";
     });
-}
-
-
-function overLayImage(response) {
-    const data = response.data
-    data.forEach(element => {
-        const { url } = element
-        imageEL.addEventlistener('click', function (e) {
-            document.querySelector('.overlay').style.display = "block";
-            const markupTwo = `
-        <img class="overlayImage" src="${url}" alt="">
-        `
-            overlayEl.innerHTML += markupTwo
-        })
-    })
 }
