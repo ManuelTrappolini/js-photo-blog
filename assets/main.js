@@ -11,33 +11,33 @@
 
 console.log('it works');
 const rowEL = document.querySelector('.wrapper')
-
+const overlayEl = document.querySelector('.overlay')
+const imageEL = document.querySelectorAll('.picture')
+const closeOverlayEl = document.querySelector('.closeOverlay')
 axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
-.then(response =>{
-    generatePictures(response)
+    .then(response => {
+        generatePictures(response);
+        closeOverlay()
+    }).catch(error => console.error(error));
+
     
-}) .catch(error =>console.error(error));
 
 
 
 
 
 
-
-
-
-function generatePictures(response){
+function generatePictures(response) {
     const data = response.data
     data.forEach(element => {
-        const{url, title} = element
+        const { url, title } = element
         console.log(url, title);
         const markup = `
-            <div class="card col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 p-relative px-3 py-3 mx-2 mt-4" style="width:18rem;">
+            <div class="card col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 p-relative px-3 py-3 mx-2 mt-4" style="width:18rem;">  
                     <img class="pin" src="./assets/img/pin.svg" alt=""> 
-                    <img src="${url}"
-                        class="" alt="...">
+                    <img class="picture" src="${url}" class="" alt="...">
                     <div class="card-body">
-                        <p class="card-text">${title}</p>
+                    <p class="card-text">${title}</p>
                     </div>
             </div>
         
@@ -45,6 +45,14 @@ function generatePictures(response){
         rowEL.innerHTML += markup
         return title
     });
-    
+
 }
 
+
+
+
+function closeOverlay(){
+    closeOverlayEl.addEventListener('click', function (e){
+        document.querySelector('.overlay').style.display = "none";
+    });
+}
