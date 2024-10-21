@@ -17,21 +17,20 @@ const closeOverlayEl = document.querySelector('.closeOverlay')
 axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
     .then(response => {
         generatePictures(response);
-        closeOverlay(closeOverlayEl)
-        const cardEl = document.querySelectorAll('.card').forEach(card => {
+
+        /* const cardEl = document.querySelectorAll('.card').forEach(card => {
             card.addEventListener('click', function (e) {
                 document.querySelector('.overlay').style.display = "block";
                 const data = response.data
-                data.forEach(element => {
-                    const { url } = element
+                    const { url } = data
                     const markupTwo = `
                     <img class="overlayImage" src="${url}" alt="">
                     `
                     overlayEl.innerHTML += markupTwo 
-                })
+                    
                 
             })
-        })
+        }) */
     }).catch(error => console.error(error));
 
 
@@ -42,6 +41,7 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
 
 function generatePictures(response) {
     const data = response.data
+    let array = []
     data.forEach(element => {
         const { url, title } = element
         console.log(url, title);
@@ -56,8 +56,21 @@ function generatePictures(response) {
         
         `
         rowEL.innerHTML += markup
+        array.push(url)
+        console.log(array);
+        const cardEl = document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', function (e) {
 
-    });
+                const imgCard = card.querySelector('.picture').src
+                const markup1 = `
+            <img class="overlayImage" src="${imgCard}" alt="">
+            `
+                overlayEl.innerHTML = markup1
+                overlayEl.style.display = "block";
+            })
+        })
+    }
+    );
 
 
 }
@@ -70,7 +83,7 @@ function overlayImage(imageEL) {
 }
 
 
-function closeOverlay(closeOverlayEl) {
+function closeOverlay() {
     closeOverlayEl.addEventListener('click', function (e) {
         document.querySelector('.overlay').style.display = "none";
     });
