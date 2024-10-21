@@ -12,15 +12,28 @@
 console.log('it works');
 const rowEL = document.querySelector('.wrapper')
 const overlayEl = document.querySelector('.overlay')
-const imageEL = document.querySelectorAll('.picture')
 const closeOverlayEl = document.querySelector('.closeOverlay')
+
 axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
     .then(response => {
         generatePictures(response);
-        closeOverlay()
+        closeOverlay(closeOverlayEl)
+        const cardEl = document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', function (e) {
+                document.querySelector('.overlay').style.display = "block";
+                const data = response.data
+                data.forEach(element => {
+                    const { url } = element
+                    const markupTwo = `
+                    <img class="overlayImage" src="${url}" alt="">
+                    `
+                    overlayEl.innerHTML += markupTwo 
+                })
+                
+            })
+        })
     }).catch(error => console.error(error));
 
-    
 
 
 
@@ -43,16 +56,43 @@ function generatePictures(response) {
         
         `
         rowEL.innerHTML += markup
-        return title
+
     });
+
 
 }
 
+function overlayImage(imageEL) {
+    imageEL.addEventlistener('click', function (e) {
+        console.log(url);
+
+    });
+}
 
 
-
-function closeOverlay(){
-    closeOverlayEl.addEventListener('click', function (e){
+function closeOverlay(closeOverlayEl) {
+    closeOverlayEl.addEventListener('click', function (e) {
         document.querySelector('.overlay').style.display = "none";
     });
+}
+
+function openOverlay(cardEl) {
+    cardEl.addEventListener('click', function (e) {
+        document.querySelector('.overlay').style.display = "block";
+    });
+}
+
+
+function overLayImage(response) {
+    const data = response.data
+    data.forEach(element => {
+        const { url } = element
+        imageEL.addEventlistener('click', function (e) {
+            document.querySelector('.overlay').style.display = "block";
+            const markupTwo = `
+        <img class="overlayImage" src="${url}" alt="">
+        `
+            overlayEl.innerHTML += markupTwo
+        })
+    })
 }
