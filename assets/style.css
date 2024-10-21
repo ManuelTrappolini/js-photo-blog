@@ -55,11 +55,13 @@ main{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    max-width: 70%;
 }
 
 .closeOverlay{
     padding: 0.5rem 1rem;
     background-color:chartreuse;
+    
 }
 
 .picture{
@@ -102,11 +104,15 @@ p{
 
 /* #region mediaquery */
 
+
+
+
 @media only screen and (min-width: 1400px) {
     .container{
         width: 70%;
     }
     
+
 }
 
 @media only screen and (min-width: 1800px) {
